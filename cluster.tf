@@ -5,9 +5,6 @@ module "vpc" {
   azs = ["${var.region}a","${var.region}b"]
   private_subnets   = var.private_subnets
   public_subnets    = var.public_subnets
-  cluster_endpoint_private_access = true
-  cluster_create_endpoint_private_access_sg_rule = true
-  cluster_endpoint_private_access_cidrs = var.private_subnets
   map_public_ip_on_launch = true
   manage_default_route_table = true
 
@@ -24,6 +21,9 @@ module "eks" {
   cluster_name = var.cluster_name
   vpc_id       = module.vpc.vpc_id
   subnets      = module.vpc.private_subnets
+  cluster_endpoint_private_access = true
+  cluster_create_endpoint_private_access_sg_rule = true
+  cluster_endpoint_private_access_cidrs = var.private_subnets
 
   node_groups = {
     eks_nodes = {
