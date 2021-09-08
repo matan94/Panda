@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-cd /terraform-code/EKS
+cd /terraform-eks
 terraform init
 terraform plan
 terraform apply -auto-approve
 
-cd /terraform-code/K8S
+cd /terraform-eks/k8s
 terraform init
 terraform plan
 terraform apply -auto-approve
