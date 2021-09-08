@@ -5,7 +5,7 @@ variable "hw_namespace" {
 
 variable "hw_name" {
 	type = string
-	default = "hellow-world"
+	default = "hello-world"
 }
 
 variable "hw_image" {
