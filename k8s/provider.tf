@@ -1,4 +1,4 @@
 provider "kubernetes" {
-  host = data.aws_eks_cluster.cluster.endpoint
+  host = data.kubernetes.cluster.endpoint
   config_path = "~/.kube/config"
 }
