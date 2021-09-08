@@ -1,13 +1,6 @@
-#resource "kubernetes_namespace" "hello-world" {
-#  metadata {
-#    name = var.hw_name
-#  }
-#}
-
 resource "kubernetes_deployment" "hello-world" {
   metadata {
     name = var.hw_name
-    #namespace = kubernetes_namespace.hello-world.metadata.0.name
     labels = {
       App = var.hw_name
     }
