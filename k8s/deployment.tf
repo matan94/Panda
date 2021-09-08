@@ -1,8 +1,8 @@
-resource "kubernetes_namespace" "hello-world" {
-  metadata {
-    name = var.hw_name
-  }
-}
+#resource "kubernetes_namespace" "hello-world" {
+#  metadata {
+#    name = var.hw_name
+#  }
+#}
 
 resource "kubernetes_deployment" "hello-world" {
   metadata {
