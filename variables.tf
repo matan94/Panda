@@ -1,45 +1,14 @@
-variable "region" {
+variable "hw_namespace" {
 	type = string
-	default = "us-east-1"
+	default = "hello_world_namespace"
 }
 
-variable "cluster_name" {
+variable "hw_name" {
 	type = string
+	default = "hello-world"
 }
 
-variable "private_subnets" {
-	type = list
-}
-
-variable "public_subnets" {
-        type = list
-}
-
-variable "vpc_cidr" {
+variable "hw_image" {
 	type = string
-}
-
-variable "node_desired" {
-	type = number
-	default = 2
-}
-
-variable "node_max" {
-	type = number
-	default = 2
-}
-
-variable "node_min" {
-	type  = number
-        default = 2
-}
-
-variable "cluster_version" {
-	type = string
-	default = "1.21"
-}
-
-variable "node_types" {
-	type = list
-	default = ["t2.micro"]
+	default = "tutum/hello-world:latest"
 }
