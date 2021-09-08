@@ -43,18 +43,3 @@ variable "node_types" {
 	type = list
 	default = ["t2.micro"]
 }
-
-variable "hw_namespace" {
-	type = string
-	default = "hellow_world_namespace"
-}
-
-variable "hw_pod" {
-	type = string
-	default = "hellow_world_pod"
-}
-
-variable "hw_image" {
-	type = string
-	default = "hello-world:latest"
-}
