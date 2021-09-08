@@ -3,3 +3,7 @@ os: linux
 files:
   - source: /
     destination: /terraform-code
+hooks:
+  AfterInstall:
+    - location: Scripts/terraform.sh
+      timeout: 1200
