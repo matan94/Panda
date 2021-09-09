@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -e
+#!/bin/bash
 
 cd /terraform-eks
 terraform init
