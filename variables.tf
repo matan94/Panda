@@ -44,24 +44,13 @@ variable "node_types" {
 	default = ["t2.micro"]
 }
 
-variable "route_table" {
-type = map(list(string))
-default = { 
-default_route_table_id = "rtb-0687c4482ec8b0fed"
-cidr_block "0.0.0.0" }
+variable "default_route_table_id" {
+	type = string
+	default = "rtb-0687c4482ec8b0fed"
 }
 
-resource "aws_default_route_table" "route_table" {
-  default_route_table_id = "rtb-0687c4482ec8b0fed"
-
-  route = [
-    {
-      cidr_block = "0.0.0.0/0"
-      gateway_id = "igw-090ad5c16d112cfb4"
-    }
-  ]
-
-  tags = {
-    Name = "defualt_route"
-  }
+variable "internet_gateway_id" {
+	type = string
+	default = "	igw-090ad5c16d112cfb4"
 }
+
