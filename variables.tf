@@ -51,6 +51,6 @@ variable "default_route_table_id" {
 
 variable "internet_gateway_id" {
 	type = string
-	default = "	igw-090ad5c16d112cfb4"
+	default = "igw-090ad5c16d112cfb4"
 }
 
