@@ -47,5 +47,21 @@ variable "node_types" {
 variable "route_table" {
 type = map(list(string))
 default = { 
-"rtb-0687c4482ec8b0fed" = ["rtb-0687c4482ec8b0fed"] }
+default_route_table_id = "rtb-0687c4482ec8b0fed"
+cidr_block "0.0.0.0" }
+}
+
+resource "aws_default_route_table" "route_table" {
+  default_route_table_id = "rtb-0687c4482ec8b0fed"
+
+  route = [
+    {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = "igw-090ad5c16d112cfb4"
+    }
+  ]
+
+  tags = {
+    Name = "defualt_route"
+  }
 }

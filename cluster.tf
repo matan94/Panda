@@ -7,10 +7,7 @@ module "vpc" {
   public_subnets    = var.public_subnets
   manage_default_route_table = true
   default_route_table_tags   = { DefaultRouteTable = true }
-  default_route_table_routes = var.route_table
-  #propagate_private_route_tables_vgw = true
-  #propagate_public_route_tables_vgw = true
-  #default_route_table_propagating_vgws = var.route_table_prop
+  default_route_table_routes = resource.route_table
   map_public_ip_on_launch = true
 
   public_subnet_tags = {
