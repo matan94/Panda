@@ -4,7 +4,7 @@ resource "aws_default_route_table" "route_table" {
   route = [
     {
       cidr_block = "0.0.0.0/0"
-      gateway_id = var.internet_gateway_id
+      gateway_id = "igw-090ad5c16d112cfb4"
     }
   ]
 
