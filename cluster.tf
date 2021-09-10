@@ -5,6 +5,7 @@ module "vpc" {
   azs = ["${var.region}a","${var.region}b"]
   private_subnets   = var.private_subnets
   public_subnets    = var.public_subnets
+  default_route_table_routes = var.route_table
   #propagate_private_route_tables_vgw = true
   #propagate_public_route_tables_vgw = true
   #default_route_table_propagating_vgws = var.route_table_prop

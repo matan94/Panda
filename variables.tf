@@ -44,7 +44,7 @@ variable "node_types" {
 	default = ["t2.micro"]
 }
 
-#variable "route_table_prop" {
-	#type = list
-	#default = ["rtb-0687c4482ec8b0fed"]
-#}
+variable "route_table" {
+	type = list
+	default = ["rtb-0687c4482ec8b0fed"]
+}
