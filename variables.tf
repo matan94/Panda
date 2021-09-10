@@ -45,6 +45,6 @@ variable "node_types" {
 }
 
 variable "route_table" {
-	type = list
-	default = ["rtb-0687c4482ec8b0fed"]
+	type = string
+	default = "rtb-0687c4482ec8b0fed"
 }
