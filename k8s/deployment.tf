@@ -1,3 +1,5 @@
+# Create a deployment for hello world app
+
 resource "kubernetes_deployment" "hello-world" {
   metadata {
     name = var.hw_name

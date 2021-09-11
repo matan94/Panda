@@ -6,4 +6,4 @@ files:
 hooks:
   AfterInstall:
     - location: Scripts/terraform.sh
-      timeout: 1200
+      timeout: 3000

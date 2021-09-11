@@ -1,3 +1,5 @@
+# Create a load balancer 
+
 resource "kubernetes_service" "hello-world" {
   metadata {
     name = var.hw_name

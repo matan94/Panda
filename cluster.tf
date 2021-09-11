@@ -35,17 +35,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   ]
 }
 
-resource "aws_egress_only_internet_gateway" "egress" {
-  vpc_id = module.vpc.vpc_id
-
-  tags = {
-    Name = "egress"
-  }
-    depends_on = [
-    resource.aws_internet_gateway.internet_gateway
-  ]
-}
-
+# Create route table
 resource "aws_default_route_table" "route_table" {
   default_route_table_id = module.vpc.default_route_table_id
 
@@ -58,10 +48,11 @@ resource "aws_default_route_table" "route_table" {
     Name = "default_route"
   }
     depends_on = [
-    resource.aws_egress_only_internet_gateway.egress
+    resource.aws_internet_gateway.internet_gateway
   ]
 }
 
+# Create and configure EKS cluster
 module "eks" {
   source       = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v17.4.0"
   cluster_version = var.cluster_version
