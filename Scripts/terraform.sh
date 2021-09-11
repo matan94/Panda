@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Select terraform workspace
+# Create if didnt exist and Select terraform workspace
 terraform workspace select hello-world || terraform workspace new hello-world
 
 # Create VPC
