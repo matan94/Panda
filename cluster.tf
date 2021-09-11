@@ -9,7 +9,7 @@ module "vpc" {
   manage_default_route_table = true
   default_route_table_tags   = { DefaultRouteTable = true }
   #default_route_table_routes = resource.aws_default_route_table.route_table
-  #map_public_ip_on_launch = true
+  map_public_ip_on_launch = true
 
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
