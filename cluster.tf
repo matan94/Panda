@@ -5,7 +5,7 @@ module "vpc" {
   cidr = var.vpc_cidr
   azs = ["${var.region}a","${var.region}b"]
   private_subnets   = var.private_subnets
-  #public_subnets    = var.public_subnets
+  public_subnets    = var.public_subnets
   manage_default_route_table = true
   default_route_table_tags   = { DefaultRouteTable = true }
   #default_route_table_routes = resource.aws_default_route_table.route_table
