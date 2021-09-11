@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 # Create if didnt exist and Select terraform workspace
 terraform workspace select hello-world || terraform workspace new hello-world
