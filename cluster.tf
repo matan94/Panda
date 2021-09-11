@@ -11,6 +11,11 @@ module "vpc" {
   #default_route_table_routes = resource.aws_default_route_table.route_table
   map_public_ip_on_launch = true
 
+  private_subnet_tags_tags = {
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb" = 1
+  }
+
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
     "kubernetes.io/role/elb"                      = "1"
