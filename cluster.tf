@@ -27,6 +27,17 @@ resource "aws_internet_gateway" "internet_gateway" {
   ]
 }
 
+resource "aws_egress_only_internet_gateway" "egress" {
+  vpc_id = module.vpc.vpc_id
+
+  tags = {
+    Name = "egress"
+  }
+    depends_on = [
+    resource.aws_internet_gateway.internet_gateway
+  ]
+}
+
 resource "aws_default_route_table" "route_table" {
   default_route_table_id = module.vpc.default_route_table_id
 
@@ -34,6 +45,10 @@ resource "aws_default_route_table" "route_table" {
     {
       cidr_block = "0.0.0.0/0"
       gateway_id = resource.aws_internet_gateway.internet_gateway.id
+    },
+    {
+      ipv6_cidr_block        = "::/0"
+      egress_only_gateway_id = resource.aws_egress_only_internet_gateway.egress.id
     }
   ]
 
@@ -41,7 +56,7 @@ resource "aws_default_route_table" "route_table" {
     Name = "default_route"
   }
     depends_on = [
-    resource.aws_internet_gateway.internet_gateway
+    resource.aws_egress_only_internet_gateway.egress
   ]
 }
 
