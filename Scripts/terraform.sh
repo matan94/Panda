@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # Select terraform workspace
-terraform workspace select hello-world
+terraform workspace select $env_name || terraform workspace new $env_name
 
 # Create VPC
 cd /terraform-project
