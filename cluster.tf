@@ -43,7 +43,7 @@ resource "aws_default_route_table" "route_table" {
 
   route {
       cidr_block = "0.0.0.0/0"
-      gateway_id = resource.aws_internet_gateway.internet_gateway.gateway.id
+      gateway_id = resource.aws_internet_gateway.internet_gateway.gateway_id
     }
 
   tags = {
