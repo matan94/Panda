@@ -41,16 +41,10 @@ resource "aws_egress_only_internet_gateway" "egress" {
 resource "aws_default_route_table" "route_table" {
   default_route_table_id = module.vpc.default_route_table_id
 
-  route = [
-    {
+  route {
       cidr_block = "0.0.0.0/0"
-      gateway_id = resource.aws_internet_gateway.internet_gateway.id
-    },
-    {
-      ipv6_cidr_block        = "::/0"
-      egress_only_gateway_id = resource.aws_egress_only_internet_gateway.egress.id
+      gateway_id = resource.aws_internet_gateway.gateway.id
     }
-  ]
 
   tags = {
     Name = "default_route"
