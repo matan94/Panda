@@ -43,14 +43,3 @@ variable "node_types" {
 	type = list
 	default = ["t2.micro"]
 }
-
-variable "default_route_table_id" {
-	type = string
-	default = "rtb-0687c4482ec8b0fed"
-}
-
-variable "internet_gateway_id" {
-	type = string
-	default = "igw-090ad5c16d112cfb4"
-}
-

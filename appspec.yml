@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /terraform-eks
+    destination: /terraform-project
 hooks:
   AfterInstall:
     - location: Scripts/terraform.sh

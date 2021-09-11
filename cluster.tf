@@ -1,18 +1,3 @@
-resource "aws_default_route_table" "route_table" {
-  default_route_table_id = var.default_route_table_id
-
-  route = [
-    {
-      cidr_block = "0.0.0.0/0"
-      gateway_id = "igw-090ad5c16d112cfb4"
-    }
-  ]
-
-  tags = {
-    Name = "default_route"
-  }
-}
-
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
@@ -30,6 +15,34 @@ module "vpc" {
     "kubernetes.io/role/elb"                      = "1"
   }
 
+}
+resource "aws_internet_gateway" "internet_gateway" {
+  vpc_id = module.vpc.vpc_id
+
+  tags = {
+    Name = "internet_gateway"
+  }
+    depends_on = [
+    module.vpc.vpc_id
+  ]
+}
+
+resource "aws_default_route_table" "route_table" {
+  default_route_table_id = var.default_route_table_id
+
+  route = [
+    {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = resource.aws_internet_gateway.internet_gateway.internet_gateway_id
+    }
+  ]
+
+  tags = {
+    Name = "default_route"
+  }
+    depends_on = [
+    resource.aws_internet_gateway.internet_gateway
+  ]
 }
 
 module "eks" {
@@ -52,4 +65,8 @@ module "eks" {
   }
 
   manage_aws_auth = false
+  
+  depends_on = [
+  module.vpc.vpc_id
+  ]
 }
