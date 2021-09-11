@@ -17,6 +17,8 @@ module "vpc" {
   }
 
 }
+
+# Create Internet Gateway
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = module.vpc.vpc_id
 
