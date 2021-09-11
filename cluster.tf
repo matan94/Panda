@@ -28,12 +28,12 @@ resource "aws_internet_gateway" "internet_gateway" {
 }
 
 resource "aws_default_route_table" "route_table" {
-  default_route_table_id = var.default_route_table_id
+  default_route_table_id = module.vpc.default_route_table_id
 
   route = [
     {
       cidr_block = "0.0.0.0/0"
-      gateway_id = resource.aws_internet_gateway.internet_gateway.internet_gateway_id
+      gateway_id = resource.aws_internet_gateway.internet_gateway.gateway_id
     }
   ]
 
